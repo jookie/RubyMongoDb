@@ -10,7 +10,7 @@ The API should be RESTful, serve JSON as the output, and contain the following C
 CREATE
 1. Creates a product
 
-READ
+READ me
 1. Shows ALL products
 2. Shows ONE product that best matches a given length/width/height/weight query (For example,
 if I make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
