@@ -17,7 +17,7 @@ if I make an API request for a product with the following dimensions: 48”l X 14”
 the API should send me back “Golf - Small”.)
 
 UPDATE
-1. Updates a product
+1. Updates a productss
 
 DESTROY
 1. Deletes a product
