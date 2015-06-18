@@ -1,0 +1,44 @@
+== Welcome to Booking Appointments RESTful API
+==Description
+Ruby/Rails Developer Challenge
+---------------------------------
+
+Directions: Build a minimal API, using Rails and MongoDB,
+for our products (please see attached).
+The API should be RESTful, serve JSON as the output, and contain the following CRUD functions:
+
+CREATE
+1. Creates a product
+
+READ
+1. Shows ALL products
+2. Shows ONE product that best matches a given length/width/height/weight query (For example,
+if I make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
+the API should send me back “Golf - Small”.)
+
+UPDATE
+1. Updates a product
+
+DESTROY
+1. Deletes a product
+==Test suite
+    I prefer RSpec over MiniTest because the syntax encourages human readable tests.
+    However the API contains both. Therefore the developer can benchmark the framework to use.
+    rake spec
+    rake test
+==Version
+    Rails version:'4.1.8'
+    Ruby version: 2.15
+==Initial Command line tasks
+    bundle Install
+    rake db:setup
+    rake spec
+    rake test
+    rake doc:app
+    open doc/app/index.html
+==Database Creation
+    db:setup will import the data from db\Carecloud Ruby data.
+==documentation
+    rake doc:app
+    open doc/app/index.html
+location: https://github.com/jookie/GreenBook
