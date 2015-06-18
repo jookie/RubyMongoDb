@@ -1,4 +1,4 @@
-== Welcome to Booking Appointments RESTful API
+== Welcome to Shiping RESTful API
 ==Description
 Ruby/Rails Developer Challenge
 ---------------------------------

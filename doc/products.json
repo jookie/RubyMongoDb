@@ -1,0 +1,16 @@
+[
+  {
+    "name"  :"Golf - Small",
+    "length":48,
+    "width" :14,
+    "height":12,
+    "weight":421
+  },
+  {
+    "name"  :"Golf - Standard",
+    "length":68,
+    "width" :64,
+    "height":22,
+    "weight":621
+  }
+]

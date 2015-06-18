@@ -1,0 +1,7 @@
+Wed, 17 Jun 2015 21:34:49 -0400
+README.rdoc	Wed, 17 Jun 2015 21:33:41 -0400
+app/controllers/application_controller.rb	Wed, 17 Jun 2015 04:31:21 -0400
+app/controllers/products_controller.rb	Wed, 17 Jun 2015 19:25:16 -0400
+app/helpers/application_helper.rb	Wed, 17 Jun 2015 04:31:21 -0400
+app/helpers/products_helper.rb	Wed, 17 Jun 2015 04:38:47 -0400
+app/models/product.rb	Wed, 17 Jun 2015 21:15:46 -0400
