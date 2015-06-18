@@ -34,15 +34,21 @@ class Product
     #Product.where([] => [parm_length, parm_width, parm_height])
     #Product.where(:length.gte => parm_length).and(:width.gte => parm_width).
     # and(:height.gte => parm_height).and(:parm_weight.gte => parm_weight)
-    products = Product.all_of(:length.gte=> parm_length,
-                              :width.gte => parm_width,
-                              :height.gte=> parm_height,
-                              :weight    => parm_weight)
+    products = Product.all_of(:length.gte => parm_length,
+                              :width.gte  => parm_width,
+                              :height.gte => parm_height,
+                              :weight.gte => parm_weight)
     products.each do |product|
         product.delta = product.length+product.width+product.height+product.weight-
                         parm_length-parm_width-parm_height-parm_weight
     end
+
+    # which one ?
     Product.descending(:delta)
-    return Product.first.name
+
+    products.find().sort( { delta: 1 } )
+
+
+    return products.first.name
   end
 end

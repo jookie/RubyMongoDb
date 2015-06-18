@@ -11,10 +11,22 @@ CREATE
 1. Creates a product
 
 READ me
+At this point of time the MongoDb service is not opening in my local host window box.
+In some cases I used pseudo codes.
+This is first time using MongoDb I'll work with the debugger and Rspec
+to help with the fixes.
+knowingly I have mistakes like with ID: missing tests. Skeletons, scaffolds, pseudocodes are used ready for wrapp up.
+How ever the application is ready for first scrum discussions.
+
+By Folowing the TDD concepts
+I'll fix the errors on the fly as soon as I'll get my local host MongoDb service,
+RubyMine debugger and Rspec running.
+
+
 1. Shows ALL products
 2. Shows ONE product that best matches a given length/width/height/weight query (For example,
 if I make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
-the API should send me back “Golf - Small”.)
+the API should send back “Golf - Small”.)
 
 UPDATE
 1. Updates a productss
@@ -22,6 +34,7 @@ UPDATE
 DESTROY
 1. Deletes a product
 ==Test suite
+    At this poin of time the MongoDb server is not working on my window box
     I prefer RSpec over MiniTest because the syntax encourages human readable tests.
     However the API contains both. Therefore the developer can benchmark the framework to use.
     rake spec
@@ -37,7 +50,7 @@ DESTROY
     rake doc:app
     open doc/app/index.html
 ==Database Creation
-    db:setup will import the data from db\Carecloud Ruby data.
+    db:setup will import the data from doc\products.json.
 ==documentation
     rake doc:app
     open doc/app/index.html
