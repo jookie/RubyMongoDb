@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+
+    # Calculate weighted price only if filtered products list is not containing any null price.
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save

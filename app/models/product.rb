@@ -14,7 +14,8 @@ class Product
   field :height, type: Float
   field :weight, type: Float
 
-  field :delta,  type: Float, :allow_nil => true
+  # if null than you you can calculte the price field
+  field :price,  type: Float, :allow_nil => true
 
   # All dimensions and weight must be present in order for shipping information to be effective.
   validate :length, presence: true, numericality: { greater_than: 0.01,
@@ -27,26 +28,43 @@ class Product
 
   # Shows ONE product that best matches a given length/width/height/weight query
   # For example:
-  # if I make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
-  # the API should send me back “Golf - Small”
+  # if you make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
+  # the API should send back “Golf - Small”
+
+  #gem 'devise'
+  #gem 'figaro'
+
+  # calculate weighted price only if:
+  # the retreived filtered filtered collection of all the products by dimentions and weight is greater
+  # than the parameters, is not containing any null price.
+  # otherwise use the true price or weighted price for selecting the Product.
+
+  # Calculate weighted price only if filtered products list is not containing any null price.
+
+  # many comments entered
   def retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
     #These are the other options to try implement the search
     #Product.where([] => [parm_length, parm_width, parm_height])
     #Product.where(:length.gte => parm_length).and(:width.gte => parm_width).
     # and(:height.gte => parm_height).and(:parm_weight.gte => parm_weight)
     products = Product.all_of(:length.gte => parm_length,
-                              :width.gte  => parm_width,
+                              :width.gte  => parm_width ,
                               :height.gte => parm_height,
                               :weight.gte => parm_weight)
-    products.each do |product|
-        product.delta = product.length+product.width+product.height+product.weight-
-                        parm_length-parm_width-parm_height-parm_weight
+
+    # calculate weighted price only if filtered products list is not containing any null price
+    if producs.find(products.find_all { |price| price['price'] == nil} > 0)
+      products.each do |product|
+        product.price = product.length+product.width+product.height+product.weight-
+            parm_length-parm_width-parm_height-parm_weight
+      end
     end
 
     # which one ?
-    Product.descending(:delta)
+    Product.descending(:price)
 
-    products.find().sort( { delta: 1 } )
+    #add find().sort( { delta: 1 } )
+    #products.find().sort( { delta: 1 } )
 
     return products.first.name
   end
