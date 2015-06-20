@@ -16,7 +16,7 @@ class Product
 
   field :delta,  type: Float, :allow_nil => true
 
-  # All dimensions must be present in order for shipping information to be effective.
+  # All dimensions and weight must be present in order for shipping information to be effective.
   validate :length, presence: true, numericality: { greater_than: 0.01,
                                                                   :message   => "Invalid length."}
   validate :width , presence: true, numericality: { greater_than: 0.01,
@@ -47,7 +47,6 @@ class Product
     Product.descending(:delta)
 
     products.find().sort( { delta: 1 } )
-
 
     return products.first.name
   end

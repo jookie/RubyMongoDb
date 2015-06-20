@@ -66,5 +66,6 @@ group :test do
   gem 'mongoid-rspec'
 end
 gem 'json'
-
+gem 'devise'
+gem 'figaro'
 
