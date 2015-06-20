@@ -1,5 +1,6 @@
 #models/product.rb
-name:String
+
+field :name, type: String
 field :length, type: Float
 field :width,  type: Float
 field :height, type: Float
@@ -38,8 +39,18 @@ class Product
   # the retreived filtered filtered collection of all the products by dimentions and weight is greater
   # than the parameters, is not containing any null price.
   # otherwise use the true price or weighted price for selecting the Product.
+  # Find the rate for a specific UPS service for a specific package or shipment
 
   # Calculate weighted price only if filtered products list is not containing any null price.
+  #  WorldShip
+  # Step 1: Register with My UPS.
+  # Step 2: Log-in
+  # Step 3: Select an API.
+  # Step 4: Download the API documentation.
+  # Step 5: Request an access key.
+
+  # Rating
+  # Compare delivery services and shipping rates to determine the best option for your customers.
 
   # many comments entered
   def retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
@@ -68,4 +79,5 @@ class Product
 
     return products.first.name
   end
+
 end
