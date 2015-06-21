@@ -38,17 +38,16 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    begin
-      p =  @product;
-      l =  p.length;
-      w =  params[:width];
-      h =  params[:height] ;
-      wg = params[:weight]
-      name = retreive_product_name_by_dimention_and_weight(l, w, h , wg)
-    rescue
-      return
+    p =  @product
+    product_name = Product.retreive_product_name_by_dimention_and_weight(p.length,
+                                                                         p.width,
+                                                                         p.height,
+                                                                         p.weight)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => product_name }
     end
-    render :json => name, :status => :ok
+
   end
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -82,17 +81,10 @@ class ProductsController < ApplicationController
       format.json { render :json => {:status => status,
                                      :data => {:code => 'success', :message => 'Success'}}.to_json,
                            :status => :no_content }
-
-      format.json { head :no_content }
     end
   end
 
   private
-  def respond_info(status, code, message, http_hdr_status)
-    respond_to do |format|
-      format.json { render :json => {:status => status, :data => {:code => code, :message => message}}.to_json, :status => http_hdr_status }
-    end
-  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
@@ -103,6 +95,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :length, :width, :height, :weight, :price)
   end
-
 
 end

@@ -55,33 +55,47 @@ class Product < ActiveRecord::Base
   # Rating
   # Compare delivery services and shipping rates to determine the best option for your customers.
 
-  # many comments entered
-  def retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
-    #These are the other options to try implement the search
-    #Product.where([] => [parm_length, parm_width, parm_height])
-    #Product.where(:length.gte => parm_length).and(:width.gte => parm_width).
-    # and(:height.gte => parm_height).and(:parm_weight.gte => parm_weight)
-    products = Product.all_of(:length.gte => parm_length,
-                              :width.gte  => parm_width ,
-                              :height.gte => parm_height,
-                              :weight.gte => parm_weight)
 
+
+  # many comments entered
+  def Product.retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
+
+    products = Product.valid_records(parm_length, parm_width, parm_height, parm_weight)
     # calculate weighted price only if filtered products list is not containing any null price
-    if producs.find(products.find_all { |price| price['price'] == nil} > 0)
+    ff = products.find_all { |price| price['price'] == nil}
+    if ( ff.length > 0)
       products.each do |product|
         product.price = product.length+product.width+product.height+product.weight-
             parm_length-parm_width-parm_height-parm_weight
       end
     end
-
-    # which one ?
-    Product.descending(:price)
-
-    #add find().sort( { delta: 1 } )
-    #products.find().sort( { delta: 1 } )
+    products.order('price DESC')
 
     return products.first.name
   end
 
+private
+  def Product.valid_records(parm_length, parm_width, parm_height, parm_weight)
+    w =      "length  >= #{parm_length}"
+    w += " AND width  >= #{parm_width}"
+    w += " AND height >= #{parm_height}"
+    w += " AND weight >= #{parm_weight}"
+    products = Product.where(w);
+    return products
+  end
+
+  def Product.query_MongoDb(parm_length, parm_width, parm_height, parm_weight)
+
+    # which one ?
+    #Product.descending(:price)
+    #add find().sort( { delta: 1 } )
+    #products.find().sort( { delta: 1 } )
+
+    products = Product.all_of(:length.gte => parm_length,
+                              :width.gte  => parm_width ,
+                              :height.gte => parm_height,
+                              :weight.gte => parm_weight)
+
+  end
 
 end
