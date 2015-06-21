@@ -43,8 +43,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'mongoid'
-gem 'bson_ext'
+#gem 'mongoid'
+#gem 'bson_ext'
 
 group :development do
   gem 'better_errors'
@@ -68,4 +68,6 @@ end
 gem 'json'
 gem 'devise'
 gem 'figaro'
+
+#rails g scaffold product name:string length:float width:float height:float weight:float price:float
 

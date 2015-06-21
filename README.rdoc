@@ -54,4 +54,4 @@ DESTROY
 ==documentation
     rake doc:app
     open doc/app/index.html
-location: https://github.com/RubMongDb/GreenBook
+location: https://github.com/jookie/RubyMongoDb

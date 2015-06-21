@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: "MyString"
   length: 1.5
   width: 1.5
   height: 1.5
   weight: 1.5
+  price:  1.5
 
 two:
-  name: MyString
+  name: "MyString"
   length: 1.5
   width: 1.5
   height: 1.5
   weight: 1.5
+  price:  1.5

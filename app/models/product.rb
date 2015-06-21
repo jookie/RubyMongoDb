@@ -1,31 +1,34 @@
-#models/product.rb
 
-field :name, type: String
-field :length, type: Float
-field :width,  type: Float
-field :height, type: Float
-field :weight, type: Float
-class Product
-  attr_accessible :name, :length, :width, :height, :weight
+# class Product
+#   attr_accessible :name, :length, :width, :height, :weight
+#
+#   include Mongoid::Document
+#   field :name,   type: String
+#   field :length, type: Float
+#   field :width,  type: Float
+#   field :height, type: Float
+#   field :weight, type: Float
+#
+#   # if null than you you can calculte the price field
+#   field :price,  type: Float, :allow_nil => true
+# end
 
-  include Mongoid::Document
-  field :name,   type: String
-  field :length, type: Float
-  field :width,  type: Float
-  field :height, type: Float
-  field :weight, type: Float
-
-  # if null than you you can calculte the price field
-  field :price,  type: Float, :allow_nil => true
+class Product < ActiveRecord::Base
+  # if null than you can calculte the price field
 
   # All dimensions and weight must be present in order for shipping information to be effective.
-  validate :length, presence: true, numericality: { greater_than: 0.01,
-                                                                  :message   => "Invalid length."}
-  validate :width , presence: true, numericality: { greater_than: 0.01,
-                                                                  :greater_than_or_equal_to => :length,
-                                                                  :message   => "Invalid width."}
-  validate :height, presence: true, numericality: { greater_than: 0.01,
-                                                                  :message   => "Invalid height."}
+  validates :name, presence: true
+
+  validates :length, presence: true, numericality: { greater_than: 0.01,
+                                                    :message   => "Invalid length."}
+  validates :width , presence: true, numericality: { greater_than: 0.01,
+                                                    :greater_than_or_equal_to => :length,
+                                                    :message   => "Invalid width."}
+  validates :height, presence: true, numericality: { greater_than: 0.01,
+                                                    :message   => "Invalid height."}
+
+  validates :weight, presence: true, numericality: { greater_than: 0.01,
+                                                     :message   => "Invalid weight."}
 
   # Shows ONE product that best matches a given length/width/height/weight query
   # For example:
@@ -79,5 +82,6 @@ class Product
 
     return products.first.name
   end
+
 
 end

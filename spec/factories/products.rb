@@ -5,6 +5,7 @@ length 1.5
 width 1.5
 height 1.5
 weight 1.5
+price 1.5
   end
 
 end
