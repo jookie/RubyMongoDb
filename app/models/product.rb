@@ -18,7 +18,6 @@ class Product < ActiveRecord::Base
   # All dimensions and weight must be present in order for shipping information to be effective.
 
 
-=begin
   validates :name, presence: true
 
   validates :length, presence: true, numericality: { greater_than: 0.01,
@@ -31,11 +30,6 @@ class Product < ActiveRecord::Base
 
   validates :weight, presence: true, numericality: { greater_than: 0.01,
                                                      :message   => "Invalid weight."}
-=end
-
-
-
-
   # Shows ONE product that best matches a given length/width/height/weight query
   # For example:
   # if you make an API request for a product with the following dimensions: 48”l X 14”w X 12”h (@ 42lbs)
