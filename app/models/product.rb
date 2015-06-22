@@ -1,6 +1,6 @@
 
 # class Product
-#   attr_accessible :name, :length, :width, :height, :weight
+   #attr_accessible :name, :length, :width, :height, :weight
 #
 #   include Mongoid::Document
 #   field :name,   type: String
@@ -15,8 +15,10 @@
 
 class Product < ActiveRecord::Base
   # if null than you can calculte the price field
-
   # All dimensions and weight must be present in order for shipping information to be effective.
+
+
+=begin
   validates :name, presence: true
 
   validates :length, presence: true, numericality: { greater_than: 0.01,
@@ -29,6 +31,10 @@ class Product < ActiveRecord::Base
 
   validates :weight, presence: true, numericality: { greater_than: 0.01,
                                                      :message   => "Invalid weight."}
+=end
+
+
+
 
   # Shows ONE product that best matches a given length/width/height/weight query
   # For example:

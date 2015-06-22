@@ -54,4 +54,20 @@ DESTROY
 ==documentation
     rake doc:app
     open doc/app/index.html
+==client that consumes
+
+A jQuery client that consumes a MongoDb-based RESTful web service.
+==Description to client that consumes
+The meta name="viewport" comes from Bootstrap. It makes the page scale
+scale according to the browser dimensions, be it a browser on a
+desktop PC or one in a smartphone. What follows is the Bootstrap
+CSS file, which we import from a CDN (content delivery network)
+so that we don't have to host it ourselves. Next come the
+Javascript files for jQuery, Bootstrap and Knockout, also imported from CDNs.
+In the body of the page we first have a top bar with the application title, created using Bootstrap's CSS styles.
+Then we have the main content area, where we will insert the application data.
+And finally, we will have our application code at the bottom,
+keeping in mind that for larger projects the application code should likely go
+into one or more independent Javascript source files.
+
 location: https://github.com/jookie/RubyMongoDb

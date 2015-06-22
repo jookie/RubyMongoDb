@@ -69,5 +69,7 @@ gem 'json'
 gem 'devise'
 gem 'figaro'
 
+
+
 #rails g scaffold product name:string length:float width:float height:float weight:float price:float
 
