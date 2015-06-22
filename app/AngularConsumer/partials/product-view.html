@@ -1,0 +1,25 @@
+<table class="table producttable">
+    <tr>
+        <td><h3>Details for {{product.length}}</h3></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Product Length</td>
+        <td>{{product.length}}</td>
+    </tr>
+    <tr>
+        <td>Height</td>
+        <td>{{product.height}}</td>
+    </tr>
+    <tr>
+        <td>Width</td>
+        <td>{{product.width}}</td>
+    </tr>
+    <tr>
+        <td>Weight</td>
+        <td>{{product.weight}}</td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="editProduct({id:product._id})">Edit</a>
+</div>
