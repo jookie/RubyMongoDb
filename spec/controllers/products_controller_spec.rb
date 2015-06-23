@@ -48,8 +48,6 @@ RSpec.describe ProductsController, type: :controller do
   # ProductsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-
-
   describe "GET #show" do
     it "assigns the requested product as @product" do
       product = Product.create! valid_attributes

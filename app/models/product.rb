@@ -55,22 +55,17 @@ class Product < ActiveRecord::Base
   # Rating
   # Compare delivery services and shipping rates to determine the best option for your customers.
 
-
-
-  # many comments entered
-  def Product.retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
-
+   def Product.retreive_product_name_by_dimention_and_weight(parm_length, parm_width, parm_height, parm_weight)
     products = Product.valid_records(parm_length, parm_width, parm_height, parm_weight)
     # calculate weighted price only if filtered products list is not containing any null price
-    ff = products.find_all { |price| price['price'] == nil}
-    if ( ff.length > 0)
+    filtered_products = products.find_all { |price| price['price'] == nil}
+    if (filtered_products.length > 0)
       products.each do |product|
         product.price = product.length+product.width+product.height+product.weight-
             parm_length-parm_width-parm_height-parm_weight
       end
     end
     products.order('price DESC')
-
     return products.first.name
   end
 
